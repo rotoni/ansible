@@ -1,0 +1,18 @@
+---
+#instances:
+#  - tags: 'webserver'
+#    names: www
+#    type: n1-standard-1
+#    image: centos-7
+#    zone: asia-east1-c
+
+instances:
+  - tags: 'webserver'
+    names:
+      - 'www1'
+      - 'www2'
+      - 'www3'
+      - 'www4'
+    type: 'n1-standard-1'
+    image: 'centos-7'
+    zone: 'asia-east1-c'

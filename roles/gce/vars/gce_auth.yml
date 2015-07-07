@@ -1,0 +1,7 @@
+---
+# vars file for gce
+
+service_account_email: example@developer.gserviceaccount.com
+pem_file: ~/ansible/roles/gce/credentials/pkey.pem
+project_id: example-test-111
+

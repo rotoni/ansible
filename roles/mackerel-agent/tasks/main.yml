@@ -1,0 +1,14 @@
+---
+- name: setting yum script
+  shell: curl -fsSL https://mackerel.io/assets/files/scripts/setup-yum.sh | sh
+  when: ansible_os_family == 'RedHat'
+ 
+- name: yum install mackerel-agent
+  yum: name=mackerel-agent state=present
+  when: ansible_os_family == 'RedHat'
+
+- name: setting API Key
+  shell: sed -i 's@# apikey = ""@apikey = "'{{ APIkey }}'"@g' /etc/mackerel-agent/mackerel-agent.conf
+ 
+- name: restart mackerel-agent
+  service: name=mackerel-agent state=restarted

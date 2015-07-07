@@ -1,0 +1,8 @@
+---
+- name: Setup instances
+  hosts: tag_webserver
+  gather_facts: no
+  sudo: yes
+  
+  roles:
+    - common

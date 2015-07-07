@@ -1,0 +1,7 @@
+---
+- name: Setup mackerel-agent
+  hosts: status_running
+  sudo: yes
+  
+  roles:
+    - mackerel-agent

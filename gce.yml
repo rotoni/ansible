@@ -1,0 +1,10 @@
+---
+- name: Create GCE instance
+  hosts: localhost
+  gather_facts: no
+  vars_files:
+    - "roles/gce/vars/gce_auth.yml"
+    - "roles/gce/vars/instance.yml"
+  
+  roles:
+    - gce

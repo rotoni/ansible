@@ -1,0 +1,39 @@
+---
+# tasks file for common
+
+#- name: Update yum
+#  yum: name=* state=latest
+
+- name: Set timezone
+  command: /usr/bin/timedatectl set-timezone Asia/Tokyo
+  changed_when: False
+
+- name: Get epel-release
+  yum: pkg=epel-release state=installed
+
+- name: Install packages
+  yum: pkg={{ item }} state=installed
+  with_items:
+    - emacs-nox
+    - vim-enhanced
+    - bind-utils
+    - whois
+    - telnet
+    - wget
+    - traceroute
+    - lsof
+    - git
+    - tig
+    - bzip2
+
+- name: Install etckeeper
+  yum: pkg=etckeeper state=installed
+  notify:
+    - Initialize etckeeper
+
+- name: Update rotate in logroate.conf
+  lineinfile: dest=/etc/logrotate.conf regexp='^rotate 4' line='rotate 55' state=present backrefs=yes
+
+- name: Uncomment compress in logrotate.conf
+  lineinfile: dest=/etc/logrotate.conf regexp='#compress' line='compress' state=present backrefs=yes
+  

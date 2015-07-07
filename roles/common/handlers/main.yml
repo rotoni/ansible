@@ -1,0 +1,5 @@
+---
+# handlers file for common
+
+- name: Initialize etckeeper
+  shell: etckeeper init -d /etc ; cd /etc ; etckeeper commit "initial commit"
